@@ -9,3 +9,4 @@ def test_pandas_fail():
     usernames = data["UIDs"]
 
     assert "LB818" in usernames
+    
