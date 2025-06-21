@@ -30,15 +30,15 @@ class Link:
 
 class LinkIterator:
     def __init__(self, link):
-        self.link = link
+        self.current = link
 
     def __iter__(self):
         return self
 
-    def __next__(self):
-        if self.link:
-            value = self.link.value
-            self.link = self.link.next
+    def __next__(self):  # makes more sense to me than in notes
+        if self.current:
+            value = self.current.value  # save value
+            self.current = self.current.next
             return value
         else:
             raise StopIteration
