@@ -1,14 +1,26 @@
+"""A simple implementation of a linked list."""
+
+
 import sys
 
 
 class Link:
+    """A link in a linked list.
+
+    Parameters
+    ----------
+    value:
+        The value to be stored in the link
+    link: Link
+        The next link in the list
+    """
+
     def __init__(self, value, next=None):
         self.value = value
         self.next = next
 
     def insert(self, link):
-        '''Insert a new link after the current one.'''
-
+        """Insert a new link after the current one."""
         link.next = self.next
         self.next = link
 
@@ -18,16 +30,16 @@ class Link:
 
 class LinkIterator:
     def __init__(self, link):
-        self.here = link
+        self.link = link
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        if self.here:
-            next = self.here
-            self.here = self.here.next
-            return next.value
+        if self.link:
+            value = self.link.value
+            self.link = self.link.next
+            return value
         else:
             raise StopIteration
 
